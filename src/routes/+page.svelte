@@ -1,10 +1,9 @@
 <script>
   import Header from "$lib/Header.svelte";
+  import Sidebar from "$lib/Sidebar.svelte";
 </script>
 
-<div class="row">
-  <Header />
-</div>
+<Sidebar />
 
 <style>
   .logo.vite:hover {

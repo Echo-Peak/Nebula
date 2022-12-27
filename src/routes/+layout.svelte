@@ -1,7 +1,11 @@
 <script>
   import "../app.css";
+  import Header from "../lib/Header.svelte";
 </script>
 
 <main class="container">
-  <slot />
+  <Header />
+  <div class="flex flex-row">
+    <slot />
+  </div>
 </main>
