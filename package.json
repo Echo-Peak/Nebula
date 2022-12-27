@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.2.0",
+    "aws-sdk": "^2.1282.0",
     "conf": "^10.2.0",
     "daisyui": "^2.46.0",
     "feather-icons": "^4.29.0"
