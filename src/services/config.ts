@@ -1,26 +1,26 @@
-import Conf from 'conf';
+
 
 const mockConfig = {
-    prefences:{
+    prefences: {
         darkMode: false,
         cache: "1GB",
-        excludsions:[
+        excludsions: [
 
         ],
-        buckets:[]
+        buckets: []
     },
 }
-const _config = new Conf();
+const _config = {
+    get(sd: any) { },
+    set(sdf: any, df: any) { }
+}
 
 export const config = {
-    get(propName: string): string {
-        const val = _config.get(propName) as string;
-        if(val && val.length){
-            return val;
-        } 
-        return '';
+    get<T>(propName: string): T {
+        const val = _config.get(propName) as any;
+        return val || '';
     },
-    set(propName: string, propValue: string) {
+    set<T>(propName: string, propValue: string | T) {
         _config.set(propName, propValue);
     }
 }
