@@ -16,8 +16,8 @@
       </div>
       <div class="flex flex-1 md:w-1/3 justify-start  text-white px-2 ">
         <div>
-          <span class="block">Local directory...</span>
-          <span class="block">S3 directory...</span>
+          <span class="block font-bold">com.nebula.public</span>
+          <!-- <span class="block">S3 directory...</span> -->
         </div>
       </div>
       <div

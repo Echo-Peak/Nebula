@@ -16,7 +16,7 @@
     <section>
       <div class="main-content flex-1 bg-gray-100 md:mt-10">
         <div class="inner-container">
-          <div class="pl-4">
+          <div class="">
             <slot />
           </div>
         </div>

@@ -5,7 +5,7 @@
   const maxCache = 10; //GB
 </script>
 
-<h2 class="font-medium leading-tight text-3xl mt-0 mb-2">AWS settings</h2>
+<h3 class="font-medium leading-tight text-3xl mt-0 mb-2">AWS settings</h3>
 
 <div>
   <section>

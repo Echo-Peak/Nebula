@@ -1,9 +1,13 @@
 <script>
   import Header from "$lib/Header.svelte";
   import Sidebar from "$lib/Sidebar.svelte";
+  import Table from "$lib/Table.svelte";
 </script>
 
 <!-- <Sidebar /> -->
+
+<Table />
+
 <style>
   .logo.vite:hover {
     filter: drop-shadow(0 0 2em #747bff);
