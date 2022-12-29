@@ -15,10 +15,7 @@
 
     <section>
       <div class="main-content flex-1 bg-gray-100 md:mt-10">
-        <div
-          class=""
-          style="background-color:teal; width:calc(100vw - 200px); height:calc(100vh - 90px); overflow-y: scroll"
-        >
+        <div class="inner-container">
           <div class="pl-4">
             <slot />
           </div>
@@ -27,3 +24,12 @@
     </section>
   </div>
 </main>
+
+<style>
+  .inner-container {
+    background-color: rgb(75 85 99);
+    width: calc(100vw - 200px);
+    height: calc(100vh - 90px);
+    overflow-y: scroll;
+  }
+</style>
