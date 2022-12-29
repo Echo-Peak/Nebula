@@ -1,5 +1,10 @@
 <script>
   import CreateTableEntry from "@components/CreateTableEntry.svelte";
+  import {
+    contextMenuContextViews,
+    showContextMenu,
+    setContextMenuContext,
+  } from "@stores/app";
   const sampleFiles = [
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -9,6 +14,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 1,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -19,6 +25,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 2,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -28,6 +35,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 3,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -37,6 +45,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 5,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -46,6 +55,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 6,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -55,6 +65,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 7,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -64,6 +75,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 8,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -73,6 +85,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 9,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -82,6 +95,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 10,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -91,6 +105,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 11,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -100,6 +115,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 12,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -109,6 +125,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 13,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -118,6 +135,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 14,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -127,6 +145,7 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 15,
     },
     {
       S3Path: "releases/staging/x64/app.exe",
@@ -136,8 +155,24 @@
       size: 8918172,
       created: 1672279397159,
       modified: 1672287691006,
+      id: 16,
     },
   ];
+
+  const openContextMenu = (evt, selectedItem) => {
+    const posX = evt.clientX;
+    const posY = evt.clientY;
+    const contextView = contextMenuContextViews.EXPLORER;
+    setContextMenuContext(posX, posY, contextView, selectedItem);
+    showContextMenu();
+  };
+  let currentActiveEntry = null;
+  const setIsActive = (id) => {
+    currentActiveEntry = id;
+  };
+  const cleanup = () => {
+    currentActiveEntry = null;
+  };
 </script>
 
 <div class="overflow-x-auto w-full h-full">
@@ -145,7 +180,7 @@
     <!-- head -->
     <thead>
       <tr>
-        <th>
+        <th class="no-border-radius">
           <label>
             <input type="checkbox" class="checkbox" />
           </label>
@@ -155,14 +190,17 @@
         <th>storageClass</th>
         <th>size</th>
         <th>created</th>
-        <th>modified</th>
-        <th />
+        <th class="no-border-radius">modified</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody on:mouseleave={cleanup}>
       <!-- row 1 -->
       {#each sampleFiles as item}
-        <tr>
+        <tr
+          on:mouseenter={() => setIsActive(item.id)}
+          on:contextmenu|preventDefault={(e) => openContextMenu(e, item)}
+          class={item.id === currentActiveEntry ? "active" : ""}
+        >
           <CreateTableEntry
             S3Path={item.S3Path}
             local={item.localPath}
@@ -178,3 +216,9 @@
     </tbody>
   </table>
 </div>
+
+<style>
+  .no-border-radius {
+    border-radius: 0px;
+  }
+</style>

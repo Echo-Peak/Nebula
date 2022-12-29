@@ -13,6 +13,24 @@ export const initialConfig = {
     buckets: []
   },
 }
+type AvailContextViews = 'explorer';
+export type ContextMenuContext = {
+  pos: {
+    x: number;
+    y: number;
+  },
+  contextView: AvailContextViews;
+  content: any;
+};
+
+const initialContextMenuContext = {
+  pos: {
+    x: 0,
+    y: 0,
+  },
+  contextView: '',
+  content: {}
+}
 
 export type ConfigType = {
   [key: string]: {
@@ -31,7 +49,24 @@ export const showModal = () => isModalOpen.set(true);
 export const hideModal = () => isModalOpen.set(false);
 export const setModalView = (nextView: string) => modalView.set(nextView);
 
+export const isContextMenuOpen = writable(false);
+export const contextMenuContext = writable(initialContextMenuContext);
+export const hideContextMenu = () => isContextMenuOpen.set(false);
+export const showContextMenu = () => isContextMenuOpen.set(true);
+export const setContextMenuContext = (x: number, y: number, contextView: AvailContextViews, content: any) => contextMenuContext.set({
+  pos: {
+    x,
+    y,
+  },
+  contextView,
+  content
+});
+
 export const ModalViews = {
   AWS: 'aws',
-  USER: 'user'
+  USER: 'user',
+  ABOUT: 'about'
+}
+export const contextMenuContextViews = {
+  EXPLORER: 'EXPLORER'
 }

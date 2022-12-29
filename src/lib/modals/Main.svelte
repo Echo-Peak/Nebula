@@ -2,6 +2,7 @@
   import { isModalOpen, modalView, ModalViews } from "@stores/app";
   import AWSSettings from "./AWSSettings.svelte";
   import UserPreferences from "./UserPreferences.svelte";
+  import About from "./About.svelte";
 </script>
 
 <div class={`modal ${$isModalOpen ? "modal-open" : ""}`}>
@@ -11,6 +12,9 @@
     {/if}
     {#if $modalView === ModalViews.USER}
       <UserPreferences />
+    {/if}
+    {#if $modalView === ModalViews.ABOUT}
+      <About />
     {/if}
   </div>
 </div>

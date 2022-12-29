@@ -68,7 +68,11 @@
     </div>
   </section>
 </div>
-<button class="btn" on:click={hideModal}>Close</button>
+
+<div>
+  <button class="btn btn-active btn-primary" on:click={hideModal}>Save</button>
+  <button class="btn" on:click={hideModal}>Close</button>
+</div>
 
 <style>
   h2 {

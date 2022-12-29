@@ -1,5 +1,4 @@
 <script>
-  import Header from "$lib/Header.svelte";
   import { currentView, currentConfig } from "../../stores/app";
 
   //currentView.set("Config");

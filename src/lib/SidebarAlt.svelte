@@ -27,6 +27,10 @@
     const current = $darkMode;
     setDarkMode(current);
   };
+  const openAboutModal = () => {
+    showModal();
+    setModalView(ModalViews.ABOUT);
+  };
 </script>
 
 <nav aria-label="alternative nav">
@@ -71,12 +75,14 @@
             onClick={openUserPreferences}
           />
         </li>
+        <li class="mr-3 flex-1 sidebar-item">
+          <SidebarButton
+            name="About"
+            iconName="HelpCircle"
+            onClick={openAboutModal}
+          />
+        </li>
       </ul>
-    </div>
-    <div class="flex flex-col items-center toggle-dark-mode">
-      <button class="btn btn-circle" on:click={toggleDarkMode}>
-        <Moon color="white" />
-      </button>
     </div>
   </div>
 </nav>

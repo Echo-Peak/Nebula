@@ -1,6 +1,4 @@
 <script>
-  import Header from "$lib/Header.svelte";
-  import Sidebar from "$lib/Sidebar.svelte";
   import Table from "$lib/Table.svelte";
 </script>
 

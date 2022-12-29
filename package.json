@@ -10,6 +10,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "tauri:build": "tauri build",
+    "tauri:build-dev": "tauri build --debug",
     "tauri": "tauri"
   },
   "dependencies": {
@@ -17,7 +18,8 @@
     "aws-sdk": "^2.1282.0",
     "conf": "^10.2.0",
     "daisyui": "^2.46.0",
-    "feather-icons": "^4.29.0"
+    "feather-icons": "^4.29.0",
+    "lucide-svelte": "^0.104.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "next",
