@@ -7,7 +7,7 @@
   import S3Bucket from "@components/icons/S3Bucket.svelte";
 
   const goToSources = () => {
-    goto("/");
+    goto("/sources");
   };
   const gotoExplorer = () => goto("/explorer");
   const gotoViewer = () => goto("/viewer");
