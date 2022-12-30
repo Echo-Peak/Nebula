@@ -1,10 +1,13 @@
-<div class="action-bar w-full h-12 flex">
-  <section class="flex-1 mt-2 ml-2">
+<div class="action-bar w-full h-12 grid grid-cols-4 gap-4">
+  <section class="mt-2 ml-2 col-span-1">
     <button class="btn btn-sm mr-2">Delete selected item</button>
-    <button class="btn btn-sm mr-6">Move Selected item</button>
-    <button class="btn btn-sm">Save to local disk</button>
+    <button class="btn btn-sm mr-2">Move Selected item</button>
+    <button class="btn btn-sm diver-left">Save to local disk</button>
   </section>
-  <section class="flex-2 mr-10 mt-2">
+  <section class=" mt-2 ml-2 col-span-1 items-end">
+    <button class="btn btn-sm diver-left">Save to local disk</button>
+  </section>
+  <section class="mr-10 mt-2 col-span-2 justify-end justify-self-end">
     <button class="btn btn-sm">Upload</button>
   </section>
 </div>

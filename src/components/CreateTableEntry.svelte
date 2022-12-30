@@ -7,6 +7,7 @@
   export let created = 0;
   export let modified = 0;
   export let size = 0;
+  export let selected = false;
 
   function bytesToHumanReadable(bytes) {
     const thresholds = [
@@ -43,7 +44,7 @@
 
 <th>
   <label>
-    <input type="checkbox" class="checkbox" />
+    <input type="checkbox" class="checkbox" checked={selected} />
   </label>
 </th>
 
