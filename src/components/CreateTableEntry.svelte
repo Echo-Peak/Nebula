@@ -1,9 +1,9 @@
-<script>
-  import { storageClasses } from "../services/storageclasses";
+<script lang="ts">
+  import { S3StorageClasses } from "../types/data";
   export let S3Path = "";
   export let local = "";
   export let cached = false;
-  export let storageClass = storageClasses.STANDARD;
+  export let storageClass = S3StorageClasses.STANDARD;
   export let created = 0;
   export let modified = 0;
   export let size = 0;

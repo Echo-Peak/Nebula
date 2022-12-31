@@ -3,7 +3,7 @@
   import Modals from "$lib/modals/Main.svelte";
   import ContextMenus from "$lib/contextMenu/Main.svelte";
   import HeaderAlt from "$lib/HeaderAlt.svelte";
-  import SidebarAlt from "$lib/SidebarAlt.svelte";
+  //import SidebarAlt from "$lib/SidebarAlt.svelte";
   import ActionBar from "$lib/ActionBar.svelte";
 </script>
 
@@ -13,8 +13,6 @@
 
 <main>
   <div class="flex flex-col md:flex-row">
-    <SidebarAlt />
-
     <section class="md:mt-10">
       <ActionBar />
       <div class="main-content flex-1 bg-gray-100">

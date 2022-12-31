@@ -6,33 +6,34 @@
     setContextMenuContext,
   } from "@stores/app";
 
-  const openContextMenu = (evt, selectedItem) => {
+  let sampleFiles: any = [];
+  const openContextMenu = (evt: any, selectedItem: any) => {
     const posX = evt.clientX;
     const posY = evt.clientY;
     const contextView = contextMenuContextViews.EXPLORER;
-    setContextMenuContext(posX, posY, contextView, selectedItem);
+    // setContextMenuContext(posX, posY, contextView, selectedItem);
     showContextMenu();
   };
-  let currentHoverElement = null;
+  let currentHoverElement: any = null;
   let currentClickElement = null;
   let selectAllElements = false;
 
-  const setHoverElement = (id) => {
+  const setHoverElement = (id: any) => {
     currentHoverElement = id;
   };
 
   const toggleAllSelected = () => {
     selectAllElements = !selectAllElements;
-    sampleFiles = sampleFiles.map((e) => ({
-      ...e,
-      selected: selectAllElements,
-    }));
+    // sampleFiles = sampleFiles.map((e) => ({
+    //   ...e,
+    //   selected: selectAllElements,
+    // }));
   };
-  const setClickElement = (id) => {
-    const index = sampleFiles.findIndex((entry) => id == entry.id);
-    if (index >= 0) {
-      sampleFiles[index].selected = !sampleFiles[index].selected;
-    }
+  const setClickElement = (id: any) => {
+    // const index = sampleFiles.findIndex((entry) => id == entry.id);
+    // if (index >= 0) {
+    //   sampleFiles[index].selected = !sampleFiles[index].selected;
+    // }
   };
   const cleanup = () => {
     currentHoverElement = null;
