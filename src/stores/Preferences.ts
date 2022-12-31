@@ -1,9 +1,14 @@
-import { writable, readable } from 'svelte/store';
-import { config } from '../services/config';
+import { fetchAPI } from '../services/fetchAPI';
 
-const _darkMode = config.get<boolean>('preferences.darkMode');
-export const darkMode = writable(_darkMode);
-export const setDarkMode = (nextValue: boolean) => {
-  darkMode.set(nextValue);
-  config.set('preferences.darkMode', nextValue);
+export const setDarkMode = async (nextValue: boolean) => {
+  await fetchAPI.configSet('preferences.darkMode', nextValue);
 }
+
+export const getDarkMode = async () => {
+  const result = await fetchAPI.configGet('preferences.darkMode');
+  if (result !== undefined) {
+    return result;
+  }
+}
+
+
