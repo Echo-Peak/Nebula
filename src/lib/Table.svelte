@@ -1,43 +1,4 @@
 <script lang="ts">
-  import CreateTableEntry from "@components/CreateTableEntry.svelte";
-  import {
-    contextMenuContextViews,
-    showContextMenu,
-    setContextMenuContext,
-  } from "@stores/app";
-
-  let sampleFiles: any = [];
-  const openContextMenu = (evt: any, selectedItem: any) => {
-    const posX = evt.clientX;
-    const posY = evt.clientY;
-    const contextView = contextMenuContextViews.EXPLORER;
-    // setContextMenuContext(posX, posY, contextView, selectedItem);
-    showContextMenu();
-  };
-  let currentHoverElement: any = null;
-  let currentClickElement = null;
-  let selectAllElements = false;
-
-  const setHoverElement = (id: any) => {
-    currentHoverElement = id;
-  };
-
-  const toggleAllSelected = () => {
-    selectAllElements = !selectAllElements;
-    // sampleFiles = sampleFiles.map((e) => ({
-    //   ...e,
-    //   selected: selectAllElements,
-    // }));
-  };
-  const setClickElement = (id: any) => {
-    // const index = sampleFiles.findIndex((entry) => id == entry.id);
-    // if (index >= 0) {
-    //   sampleFiles[index].selected = !sampleFiles[index].selected;
-    // }
-  };
-  const cleanup = () => {
-    currentHoverElement = null;
-  };
 </script>
 
 <div class="overflow-x-auto w-full h-full">
@@ -65,7 +26,7 @@
     </thead>
     <tbody on:mouseleave={cleanup}>
       <!-- row 1 -->
-      {#each sampleFiles as item}
+      <!-- {#each sampleFiles as item}
         <tr
           on:click={() => setClickElement(item.id)}
           on:mouseenter={() => setHoverElement(item.id)}
@@ -83,7 +44,7 @@
             selected={item.selected}
           />
         </tr>
-      {/each}
+      {/each} -->
       <!-- row 2 -->
     </tbody>
   </table>

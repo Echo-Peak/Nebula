@@ -32,7 +32,43 @@ export const enum S3StorageClasses {
   GLACIER_IR = "GLACIER_IR",
 }
 
-export interface S3API {
-  listBuckets(): Promise<string[]>,
-  // openFolder(previousDirectory: string, nextDirectory: string): Promise<S3SearchResult>
+export type DevData = {
+  buckets: BucketItem[],
+  bucketContents: {
+    [bucketName: string]: S3ObjectItem[]
+  }
+  config: Config
 }
+
+export type Config = {
+  credentials: AWSCredentials,
+  preferences: {
+    cache: string,
+    maxCacheLimit: number,
+    exclusions: string[]
+  },
+  betaFeatures: {
+    enableFilesystemSync: boolean,
+    enableDarkMode: boolean,
+    enableViewer: boolean
+  }
+}
+
+export type BucketItem = {
+  name: string,
+  region: string
+}
+
+export type S3ObjectItem = {
+  etag: string,
+  size: number,
+  key: string
+}
+
+export type AWSCredentials = {
+  accessKeyId: string;
+  secretAccessKey: string;
+  region: string
+}
+
+export type ConfigSections = "credentials" | "preferences" | "betaFeatures";

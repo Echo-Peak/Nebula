@@ -2,8 +2,8 @@
   import "../app.css";
   import Modals from "$lib/modals/Main.svelte";
   import ContextMenus from "$lib/contextMenu/Main.svelte";
-  import HeaderAlt from "$lib/HeaderAlt.svelte";
-  import SidebarAlt from "$lib/SidebarAlt.svelte";
+  import HeaderAlt from "$lib/Header.svelte";
+  import SidebarAlt from "$lib/Sidebar.svelte";
   import ActionBar from "$lib/ActionBar.svelte";
 </script>
 

@@ -1,5 +1,16 @@
-<script>
+<script lang="ts">
   import SearchBar from "@components/SearchBar.svelte";
+  import { currentBucket } from "@stores/S3";
+  import type { BucketItem } from "src/types/data";
+
+  let bucket = "";
+  let region = "";
+  currentBucket.subscribe((bucketItem: BucketItem | undefined) => {
+    if (bucketItem) {
+      bucket = bucketItem.name;
+      region = bucketItem.region;
+    }
+  });
 </script>
 
 <header>
@@ -16,8 +27,8 @@
       </div>
       <div class="flex flex-1 md:w-1/3 justify-start  text-white px-2 ">
         <div>
-          <span class="block font-bold">com.nebula.public</span>
-          <!-- <span class="block">S3 directory...</span> -->
+          <span class="block font-bold">{bucket}</span>
+          <span class="block">{region}</span>
         </div>
       </div>
       <div

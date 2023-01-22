@@ -1,10 +1,16 @@
 import { defineConfig } from "vite";
 import { sveltekit } from "@sveltejs/kit/vite";
+import * as devData from './dev-data.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [sveltekit()],
-
+  plugins: [
+    sveltekit(),
+  ],
+  define:{
+    devData: devData,
+    isDevelopment: process.env.NODE_ENV === 'development',
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
   clearScreen: false,

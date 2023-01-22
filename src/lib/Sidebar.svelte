@@ -1,20 +1,10 @@
 <script>
   import { Moon } from "lucide-svelte";
   import SidebarButton from "@components/SidebarButton.svelte";
-  import { getDarkMode, setDarkMode } from "@stores/Preferences";
+  //import { getDarkMode, setDarkMode } from "@stores/Preferences";
   import { goto } from "$app/navigation";
   import { showModal, setModalView, ModalViews } from "@stores/app";
 
-  let isDarkMode;
-
-  getDarkMode()
-    .then(() => {
-      isDarkMode = "it worked";
-    })
-    .catch((err) => {
-      console.log(err);
-      isDarkMode = "it no work";
-    });
   const goToSources = () => {
     goto("/sources");
   };
@@ -54,7 +44,7 @@
       >
         <li class="mr-3 flex-1 sidebar-item">
           <SidebarButton
-            name={`Darkmode >> ${isDarkMode}`}
+            name={`Sources`}
             iconName="Database"
             onClick={goToSources}
           />

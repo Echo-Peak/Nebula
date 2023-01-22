@@ -1,8 +1,21 @@
-<script>
+<script lang="ts">
   import { hideModal } from "@stores/app";
-  import { Eye } from "lucide-svelte";
+  import { Eye, EyeOff } from "lucide-svelte";
+  import { creds } from "@stores/config";
 
-  const maxCache = 10; //GB
+  let accessID = "";
+  let secret = "";
+  let region = "";
+  let showAccessKey = false;
+  let showPassword = false;
+
+  creds.subscribe((currentCreds) => {
+    if (currentCreds !== undefined) {
+      accessID = currentCreds.accessKeyId;
+      secret = currentCreds.secretAccessKey;
+      region = currentCreds.region;
+    }
+  });
 </script>
 
 <h3 class="font-medium leading-tight text-3xl mt-0 mb-2">AWS settings</h3>
@@ -13,12 +26,22 @@
 
     <div class="relative inline">
       <input
-        type="password"
+        type={showAccessKey ? "text" : "password"}
+        value={accessID}
         placeholder="AWS access key"
         class="input input-bordered w-full max-w-xs"
       />
       <div class="absolute inset-y-0 right-0 pr-3">
-        <Eye style="cursor: pointer" on:click={() => false} />
+        <button
+          on:click={() => (showAccessKey = !showAccessKey)}
+          title={showAccessKey ? "Hide" : "Show"}
+        >
+          {#if showAccessKey}
+            <EyeOff style="cursor: pointer" />
+          {:else}
+            <Eye style="cursor: pointer" />
+          {/if}
+        </button>
       </div>
     </div>
   </section>
@@ -28,12 +51,22 @@
 
     <div class="relative inline">
       <input
-        type="password"
+        type={showPassword ? "text" : "password"}
         placeholder="AWS Secret"
+        value={secret}
         class="input input-bordered w-full max-w-xs"
       />
       <div class="absolute inset-y-0 right-0 pr-3">
-        <Eye style="cursor: pointer" on:click={() => false} />
+        <button
+          on:click={() => (showPassword = !showPassword)}
+          title={showPassword ? "Hide" : "Show"}
+        >
+          {#if showPassword}
+            <EyeOff style="cursor: pointer" />
+          {:else}
+            <Eye style="cursor: pointer" />
+          {/if}
+        </button>
       </div>
     </div>
   </section>
@@ -45,26 +78,9 @@
       <input
         type="text"
         placeholder="AWS Region"
+        value={region}
         class="input input-bordered w-full max-w-xs"
       />
-    </div>
-  </section>
-
-  <section class="mb-10">
-    <h2>Local cache</h2>
-
-    <input
-      type="range"
-      min="1"
-      max={maxCache}
-      value="1"
-      class="range"
-      step="1"
-    />
-    <div class="w-full flex justify-between text-xs px-2">
-      {#each Array(maxCache) as _, GB}
-        <span>{GB + 1}GB</span>
-      {/each}
     </div>
   </section>
 </div>
