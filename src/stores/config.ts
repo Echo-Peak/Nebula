@@ -7,3 +7,7 @@ const Config = new ConfigAPI();
 
 const currentCreds = writable<AWSCredentials>();
 export const creds = createAsyncWritable<AWSCredentials | undefined>(currentCreds, Config.getCredentials, undefined);
+
+export const saveCreds = async (newCreds: AWSCredentials) => {
+  await Config.set('credentials', newCreds);
+}

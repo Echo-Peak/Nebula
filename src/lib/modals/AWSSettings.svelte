@@ -1,7 +1,7 @@
 <script lang="ts">
   import { hideModal } from "@stores/app";
   import { Eye, EyeOff } from "lucide-svelte";
-  import { creds } from "@stores/config";
+  import { creds, saveCreds } from "@stores/config";
 
   let accessID = "";
   let secret = "";
@@ -16,6 +16,15 @@
       region = currentCreds.region;
     }
   });
+
+  const onSave = () => {
+    saveCreds({
+      accessKeyId: accessID,
+      secretAccessKey: secret,
+      region: region,
+    });
+    hideModal();
+  };
 </script>
 
 <h3 class="font-medium leading-tight text-3xl mt-0 mb-2">AWS settings</h3>
@@ -30,6 +39,7 @@
         value={accessID}
         placeholder="AWS access key"
         class="input input-bordered w-full max-w-xs"
+        on:change={(e) => (accessID = e.target.value)}
       />
       <div class="absolute inset-y-0 right-0 pr-3">
         <button
@@ -55,6 +65,7 @@
         placeholder="AWS Secret"
         value={secret}
         class="input input-bordered w-full max-w-xs"
+        on:change={(e) => (secret = e.target.value)}
       />
       <div class="absolute inset-y-0 right-0 pr-3">
         <button
@@ -79,14 +90,15 @@
         type="text"
         placeholder="AWS Region"
         value={region}
+        on:change={(e) => (region = e.target.value)}
         class="input input-bordered w-full max-w-xs"
       />
     </div>
   </section>
 </div>
 
-<div>
-  <button class="btn btn-active btn-primary" on:click={hideModal}>Save</button>
+<div class="pt-2">
+  <button class="btn btn-active btn-primary" on:click={onSave}>Save</button>
   <button class="btn" on:click={hideModal}>Close</button>
 </div>
 
