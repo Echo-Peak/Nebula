@@ -44,13 +44,13 @@ export type Config = {
   credentials: AWSCredentials,
   preferences: {
     cache: string,
-    maxCacheLimit: number,
+    max_cache_limit: number,
     exclusions: string[]
   },
-  betaFeatures: {
-    enableFilesystemSync: boolean,
-    enableDarkMode: boolean,
-    enableViewer: boolean
+  beta_features: {
+    enable_filesystem_sync: boolean,
+    enable_dark_mode: boolean,
+    enable_viewer: boolean
   }
 }
 
@@ -62,13 +62,21 @@ export type BucketItem = {
 export type S3ObjectItem = {
   etag: string,
   size: number,
-  key: string
+  key: string,
+  storageClass: S3StorageClasses,
+  lastModified: number,
+  cached?: boolean,
+  localPath?: string,
+  created: number
 }
 
 export type AWSCredentials = {
-  accessKeyId: string;
-  secretAccessKey: string;
+  access_key_id: string;
+  secret_access_key: string;
   region: string
 }
 
+export type Selectable = S3ObjectItem & {
+  selected: boolean;
+};
 export type ConfigSections = "credentials" | "preferences" | "betaFeatures";

@@ -68,5 +68,5 @@ export const ModalViews = {
   ABOUT: 'about'
 }
 export const contextMenuContextViews = {
-  EXPLORER: 'EXPLORER'
+  EXPLORER: 'explorer'
 }
